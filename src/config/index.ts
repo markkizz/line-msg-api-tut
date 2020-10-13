@@ -17,4 +17,8 @@ export default {
   //   username: process.env.EMAIL_USERNAME,
   //   password: process.env.EMAIL_PASSWORD,
   // },
+  line: {
+    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
+    channelSecret: process.env.CHANNEL_SECRET
+  }
 };

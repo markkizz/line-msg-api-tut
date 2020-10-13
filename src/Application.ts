@@ -7,6 +7,10 @@ import * as helmet from "helmet";
 import * as passport from "passport";
 import "reflect-metadata";
 import config from "./config";
+import * as line from "@line/bot-sdk";
+
+import { WebhookModule } from "./modules";
+
 // import routes = require('../api/routes/v1');
 // import { logs } from './vars';
 // import strategies = require('./passport');
@@ -18,24 +22,24 @@ const app = e();
 app.use(morgan(config.logs));
 
 // // parse body params and attache them to req.body
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // // gzip compression
-app.use(compress());
+// app.use(compress());
 
 // // lets you use HTTP verbs such as PUT or DELETE
 // // in places where the client doesn't support it
 // app.use(methodOverride());
 
 // // secure apps by setting various HTTP headers
-app.use(helmet());
+// app.use(helmet());
 
 // // enable CORS - Cross Origin Resource Sharing
-app.use(cors());
+// app.use(cors());
 
 // // enable authentication
-app.use(passport.initialize());
+// app.use(passport.initialize());
 // passport.use('jwt', strategies.jwt);
 // passport.use('facebook', strategies.facebook);
 // passport.use('google', strategies.google);
@@ -53,5 +57,10 @@ app.use(passport.initialize());
 // app.use(error.handler);
 
 app.get("/", (req, res) => res.json({ status: "OK" }));
+app.use(
+  "/webhook",
+  line.middleware({ ...config.line }),
+  WebhookModule
+);
 
 export default app;
