@@ -5,7 +5,7 @@
   "author": "markkizz <mark.pattanapara@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "app": " ts-node -r tsconfig-paths/register ./src/server.ts",
+    "app": "ts-node -r tsconfig-paths/register ./src/server.ts",
     "dev": "nodemon --watch \"**/*\" -e tsx,ts --exec ts-node -r tsconfig-paths/register ./src/server.ts",
     "build": "webpack --verbose && yarn app",
     "lint": "tslint ./**/*.ts",
