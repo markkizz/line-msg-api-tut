@@ -30,6 +30,9 @@
     "typeRoots": [
       "./typings",
       "./node_modules/@types"
+    ],
+    "types": [
+      "express"
     ]
   },
   "include": [
